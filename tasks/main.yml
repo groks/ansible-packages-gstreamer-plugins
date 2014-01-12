@@ -1,0 +1,26 @@
+---
+
+- name: plugins for current gstreamer version
+  action: yum name={{ item }} state=present
+  with_items:
+    - gstreamer1-plugins-base
+    - gstreamer1-plugins-good
+    - gstreamer1-plugins-bad-free
+    - gstreamer1-plugins-bad-freeworld
+    - gstreamer1-plugins-ugly
+    - gstreamer1-libav
+  when: ansible_distribution_version|int >= 18
+
+- name: plugins for older gstreamer version still used by some apps
+  action: yum name={{ item }} state=present
+  with_items:
+    - gstreamer-plugins-base
+    - gstreamer-plugins-good
+    - gstreamer-plugins-bad
+    - gstreamer-plugins-bad-free
+    - gstreamer-plugins-bad-nonfree
+    - gstreamer-plugins-ugly
+    - gstreamer-ffmpeg
+    - gstreamer-rtsp
+    - gstreamer-tools
+  when: ansible_distribution_version|int <= 20

@@ -1,0 +1,17 @@
+---
+galaxy_info:
+  author: groks
+  description: multi-media plugins enabling additional audio/video formats for standard programs
+  license: BSD
+  min_ansible_version: 1.3
+
+  platforms:
+    - name: Fedora
+      versions:
+        - all
+
+  categories:
+    - packaging
+
+dependencies:
+  - groks.repo-extra
